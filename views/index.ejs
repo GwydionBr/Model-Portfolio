@@ -1,5 +1,19 @@
 <%- include('./partials/header') %>
 
+<h2>MY PORTFOLIO</h2>
+
+<div class="portfolio">
+  <% pictureNames.map((row) => { %>
+    <div className="picture-row">
+      <% row.map((picture) => { %>
+      <figure class="portfolio-item">
+        <img src="pictures/<%= picture %>.JPG" alt="Picture<%= picture %>">
+      </figure>
+    <% }) %>
+  </div>
+  <% }) %>
+</div>
+
 
 
 <%- include('./partials/footer') %>

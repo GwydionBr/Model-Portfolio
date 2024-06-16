@@ -1,0 +1,21 @@
+header{
+  text-align: center;
+  font-family: serif;
+}
+
+header a{
+  color: #333232;
+  text-decoration: none;
+}
+
+header nav{
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  gap: 1rem;
+}
+
+h1{
+  font-size: 3rem;
+  color: #333;
+}

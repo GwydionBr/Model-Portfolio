@@ -8,3 +8,21 @@ window.addEventListener('scroll', () => {
     document.querySelector('.footer-content').classList.remove('fade-in');
   }
 });
+
+document.addEventListener("DOMContentLoaded", function() {
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+      } else {
+        entry.target.classList.remove('visible');
+      }
+    });
+  }, {
+    threshold: 0.1 // Adjust this value based on when you want the fade effect to start
+  });
+
+  document.querySelectorAll('.portfolio-item').forEach(item => {
+    observer.observe(item);
+  });
+});

@@ -46,7 +46,13 @@ h2{
 }
 
 .portfolio-item{
-  width: 100%;
+  width: 95%;
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+}
+
+.portfolio-item.visible {
+  opacity: 1;
 }
 
 img{

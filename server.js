@@ -28,6 +28,10 @@ app.get('/', (req, res) => {
   res.render('index.ejs', personalInforamtion);
 });
 
+app.get('/contact', (req, res) => {
+  res.render('contact.ejs', personalInforamtion);
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });

@@ -1,10 +1,15 @@
 import express from 'express';
 import bodyParser from 'body-parser';
 import env from 'dotenv';
+import nodemailer from 'nodemailer';
 
 const app = express();
 const port = 3000;
 env.config();
+
+const email_service_provider = process.env.EMAIL_SERVICE || 'your_email_service_provider';
+const email_address = process.env.EMAIL_ADDRESS || 'your_email_address';
+const email_password = process.env.EMAIL_PASSWORD || 'your_email_password';
 
 
 const personalInforamtion = {
@@ -29,7 +34,42 @@ app.get('/', (req, res) => {
 });
 
 app.get('/contact', (req, res) => {
-  res.render('contact.ejs', personalInforamtion);
+  const message = req.query.message;
+  res.render('contact.ejs', { ...personalInforamtion, message: message || ''});
+});
+
+
+// POST route from contact form
+app.post('/contact', (req, res) => {
+  const { name, email, message } = req.body;
+
+  // Create a transporter object with your email service provider details
+  const transporter = nodemailer.createTransport({
+    service:  email_service_provider,
+    auth: {
+      user: email_address, 
+      pass: email_password,
+    }
+  });
+
+  // Define the email options
+  const mailOptions = {
+    from: email_address,
+    to: email_address,
+    subject: 'Contact Form Submission',
+    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+  };
+
+  // Send the email
+  transporter.sendMail(mailOptions, (error, info) => {
+    if (error) {
+      console.log('Error sending email:', error);
+      res.redirect('/contact?message=Error+sending+email');
+    } else {
+      console.log('Email sent:', info.response);
+      res.redirect('/contact?message=Email+sent+successfully');
+    }
+  });
 });
 
 app.listen(port, () => {

@@ -71,7 +71,7 @@ h2{
 }
 
 footer{
-  margin: 3rem -8px -10px -8px;
+  margin: 3rem -30px -10px -30px;
   padding-top: 1rem;
   padding-bottom: 1rem;
   background-color: #333; 
@@ -204,4 +204,10 @@ label {
 
 .btn:hover {
     background-color: #0056b3; 
+}
+
+.alert{
+  color:red;
+  font-size: 1rem;
+  margin-bottom: 1rem;
 }

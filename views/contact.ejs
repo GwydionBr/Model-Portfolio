@@ -3,7 +3,14 @@
 
 <div class="contact-container">
     <h1>Contact</h1>
+    <% if (message !== '') { %>
+        <div class="alert" role="alert">
+            <%= message %>
+        </div>
+    <% } else { %>
     <p>Send me a message!</p>
+    <% } %>
+
     <form action="/contact" method="POST">
         <div class="form-group">
             <label for="name">Name</label>

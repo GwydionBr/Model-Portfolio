@@ -1,5 +1,5 @@
 body{
-  margin : 0 30px;
+  margin : 0 60px;
 }
 
 header{
@@ -120,7 +120,7 @@ footer{
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   z-index: -1;
 }
 

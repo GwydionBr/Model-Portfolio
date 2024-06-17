@@ -10,8 +10,9 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Event listener for DOMContentLoaded to initialize IntersectionObserver and image viewer
+
 document.addEventListener("DOMContentLoaded", function() {
+
   // Initialize IntersectionObserver to add 'visible' class to elements in view
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -31,11 +32,8 @@ document.addEventListener("DOMContentLoaded", function() {
   document.querySelectorAll('.portfolio-item').forEach(item => {
     observer.observe(item);
   });
-});
 
-
-// Image Viewer Setup
-document.addEventListener("DOMContentLoaded", function() {
+  // Image Viewer Setup
   const images = document.querySelectorAll('.portfolio-item img');
   const viewer = document.getElementById('imageViewer');
   const viewerImage = document.querySelector('.viewer-image');

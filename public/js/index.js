@@ -26,3 +26,49 @@ document.addEventListener("DOMContentLoaded", function() {
     observer.observe(item);
   });
 });
+
+
+// Image Viewer
+document.addEventListener("DOMContentLoaded", function() {
+  const images = document.querySelectorAll('.portfolio-item img');
+  const viewer = document.getElementById('imageViewer');
+  const viewerImage = document.querySelector('.viewer-image');
+  const closeBtn = document.querySelector('.close');
+  const nextBtn = document.querySelector('.nav.right');
+  const prevBtn = document.querySelector('.nav.left');
+  let currentIndex = 0;
+
+  function openViewer(index) {
+    viewer.style.display = 'flex';
+    viewerImage.src = images[index].src;
+    currentIndex = index;
+  }
+
+  function closeViewer() {
+    viewer.style.display = 'none';
+  }
+
+  function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    viewerImage.src = images[currentIndex].src;
+  }
+
+  function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    viewerImage.src = images[currentIndex].src;
+  }
+
+  images.forEach((img, index) => {
+    img.addEventListener('click', () => openViewer(index));
+  });
+
+  closeBtn.addEventListener('click', closeViewer);
+  nextBtn.addEventListener('click', nextImage);
+  prevBtn.addEventListener('click', prevImage);
+
+  viewer.addEventListener('click', (e) => {
+    if (e.target === viewer) {
+      closeViewer();
+    }
+  });
+});
